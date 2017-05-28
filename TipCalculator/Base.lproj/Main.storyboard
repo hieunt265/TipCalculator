@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -68,9 +69,9 @@
                                     <constraint firstAttribute="height" constant="40" id="vw1-1y-C67"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                    <segment title=""/>
+                                    <segment title="18%"/>
+                                    <segment title="20%"/>
+                                    <segment title="25%"/>
                                 </segments>
                                 <connections>
                                     <action selector="calulatorTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="s4d-Ry-5Oz"/>
@@ -85,10 +86,51 @@
                                     <action selector="calulatorTip:" destination="BYZ-38-t0r" eventType="editingChanged" id="zHV-pa-cu1"/>
                                 </connections>
                             </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRP-XK-Rmf">
+                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKy-Mx-zxh">
+                                        <rect key="frame" x="335" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="QKy-Mx-zxh" secondAttribute="height" multiplier="1:1" id="QLu-Hx-KvU"/>
+                                        </constraints>
+                                        <state key="normal" image="setting"/>
+                                    </button>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="vPU-bE-iD9">
+                                        <rect key="frame" x="18" y="0.0" width="229" height="41"/>
+                                        <connections>
+                                            <action selector="checkPercentSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="jZ4-IK-WGF"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1U-cn-1FW">
+                                        <rect key="frame" x="255" y="0.0" width="60" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="R1U-cn-1FW" secondAttribute="height" multiplier="3:2" id="JRA-cW-HQP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.99686354398727417" green="0.77481848001480103" blue="0.2412799596786499" alpha="0.80000001190000003" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="R1U-cn-1FW" firstAttribute="bottom" secondItem="vPU-bE-iD9" secondAttribute="bottom" id="98G-lp-XUu"/>
+                                    <constraint firstItem="vPU-bE-iD9" firstAttribute="leading" secondItem="pRP-XK-Rmf" secondAttribute="leading" constant="20" id="EwY-eX-t7i"/>
+                                    <constraint firstItem="R1U-cn-1FW" firstAttribute="centerY" secondItem="vPU-bE-iD9" secondAttribute="centerY" id="NZy-7L-OEn"/>
+                                    <constraint firstItem="R1U-cn-1FW" firstAttribute="leading" secondItem="vPU-bE-iD9" secondAttribute="trailing" constant="10" id="Vak-6d-kLU"/>
+                                    <constraint firstItem="vPU-bE-iD9" firstAttribute="centerY" secondItem="pRP-XK-Rmf" secondAttribute="centerY" id="YjE-HO-5YH"/>
+                                    <constraint firstItem="QKy-Mx-zxh" firstAttribute="height" secondItem="pRP-XK-Rmf" secondAttribute="height" id="Z6u-ZQ-oCy"/>
+                                    <constraint firstAttribute="trailing" secondItem="QKy-Mx-zxh" secondAttribute="trailing" id="fk2-pO-7fL"/>
+                                    <constraint firstAttribute="bottom" secondItem="QKy-Mx-zxh" secondAttribute="bottom" id="gJ1-3F-NzZ"/>
+                                    <constraint firstItem="vPU-bE-iD9" firstAttribute="width" secondItem="pRP-XK-Rmf" secondAttribute="width" multiplier="3:5" id="ia8-tB-aeb"/>
+                                    <constraint firstAttribute="bottom" secondItem="vPU-bE-iD9" secondAttribute="bottom" id="tc7-69-Gqa"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="pRP-XK-Rmf" firstAttribute="height" secondItem="tw5-9z-MYk" secondAttribute="height" id="082-od-ecg"/>
                             <constraint firstItem="jl4-BL-7aN" firstAttribute="bottom" secondItem="U6o-Iy-RFV" secondAttribute="bottom" id="2lb-gi-Utb"/>
                             <constraint firstItem="tw5-9z-MYk" firstAttribute="leading" secondItem="U6o-Iy-RFV" secondAttribute="leading" id="4PX-LN-n6H"/>
                             <constraint firstItem="w64-O8-7cX" firstAttribute="trailing" secondItem="Wey-bb-j5k" secondAttribute="trailing" id="4ui-wQ-9Ax"/>
@@ -100,6 +142,7 @@
                             <constraint firstItem="Jgn-Wy-j5k" firstAttribute="trailing" secondItem="bAr-uw-b4z" secondAttribute="trailing" id="Phv-LW-HcS"/>
                             <constraint firstItem="Wey-bb-j5k" firstAttribute="top" secondItem="bAr-uw-b4z" secondAttribute="top" id="QTP-Iw-BcO"/>
                             <constraint firstItem="5DI-jC-gXc" firstAttribute="top" secondItem="w64-O8-7cX" secondAttribute="bottom" constant="50" id="SEf-Q1-50F"/>
+                            <constraint firstItem="pRP-XK-Rmf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TLl-KL-ckt"/>
                             <constraint firstItem="U6o-Iy-RFV" firstAttribute="top" secondItem="5DI-jC-gXc" secondAttribute="bottom" constant="50" id="WVK-xK-iJS"/>
                             <constraint firstItem="Wey-bb-j5k" firstAttribute="bottom" secondItem="bAr-uw-b4z" secondAttribute="bottom" id="YTV-Rv-kCc"/>
                             <constraint firstItem="w64-O8-7cX" firstAttribute="top" secondItem="Jgn-Wy-j5k" secondAttribute="top" id="ZFJ-wV-QLh"/>
@@ -109,9 +152,11 @@
                             <constraint firstItem="U6o-Iy-RFV" firstAttribute="leading" secondItem="Jgn-Wy-j5k" secondAttribute="leading" id="cuw-ok-CJa"/>
                             <constraint firstItem="U6o-Iy-RFV" firstAttribute="height" secondItem="Jgn-Wy-j5k" secondAttribute="height" id="eaS-1F-STD"/>
                             <constraint firstItem="bAr-uw-b4z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="40" id="jJi-9z-38e"/>
+                            <constraint firstAttribute="trailing" secondItem="pRP-XK-Rmf" secondAttribute="trailing" id="mmc-Ad-g2F"/>
                             <constraint firstItem="jl4-BL-7aN" firstAttribute="top" secondItem="U6o-Iy-RFV" secondAttribute="top" id="ocS-sE-txg"/>
                             <constraint firstItem="bAr-uw-b4z" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="ooM-Xx-J9V"/>
                             <constraint firstItem="Jgn-Wy-j5k" firstAttribute="leading" secondItem="bAr-uw-b4z" secondAttribute="leading" id="qdt-ma-osb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pRP-XK-Rmf" secondAttribute="bottom" id="sHE-iy-XbH"/>
                             <constraint firstItem="Jgn-Wy-j5k" firstAttribute="top" secondItem="bAr-uw-b4z" secondAttribute="bottom" constant="50" id="sfJ-bb-awb"/>
                             <constraint firstItem="Jgn-Wy-j5k" firstAttribute="height" secondItem="bAr-uw-b4z" secondAttribute="height" id="z0z-l4-tgG"/>
                         </constraints>
@@ -122,6 +167,8 @@
                     <navigationItem key="navigationItem" title="Tip Calulator" id="dfM-Vh-hse"/>
                     <connections>
                         <outlet property="billField" destination="Wey-bb-j5k" id="f4i-MD-lTL"/>
+                        <outlet property="percentLabel" destination="R1U-cn-1FW" id="2IT-Ba-Yan"/>
+                        <outlet property="percentSlider" destination="vPU-bE-iD9" id="OmC-Tg-zXZ"/>
                         <outlet property="tipControl" destination="tw5-9z-MYk" id="iCE-MW-eqA"/>
                         <outlet property="tipLabel" destination="w64-O8-7cX" id="inT-Vt-xVv"/>
                         <outlet property="totalLabel" destination="jl4-BL-7aN" id="DXY-oj-Iw2"/>
@@ -155,4 +202,7 @@
             <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="setting" width="512" height="512"/>
+    </resources>
 </document>

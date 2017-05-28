@@ -10,9 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var billField: UITextField!
+    
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var percentLabel: UILabel!
+    
     @IBOutlet weak var tipControl: UISegmentedControl!
+    @IBOutlet weak var percentSlider: UISlider!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,22 +33,33 @@ class ViewController: UIViewController {
         view.endEditing(true)
     }
     
+    func TipCalulator(bill:Double,percent:Double){
+        let tip =   bill * percent
+        let total = bill + tip
+        
+        tipLabel.text =  String(format: "$%.2f" ,(tip))
+        totalLabel.text = String(format: "$%.2f" ,(total))
+    }
+    
+    
     @IBAction func calulatorTip(_ sender: Any) {
-       
         
         
         let tipPercent = [0.18,0.2, 0.25]
         
         
         let bill = Double(billField.text!) ?? 0
-        let tip =   bill * tipPercent[tipControl.selectedSegmentIndex]
-        let total = bill + tip
         
-        tipLabel.text =  String(format: "$%.2f" ,(tip))
-        totalLabel.text = String(format: "$%.2f" ,(total))
+        TipCalulator(bill: bill, percent: tipPercent[tipControl.selectedSegmentIndex])
+        
 
     }
-
-
+    
+    @IBAction func checkPercentSlider(_ sender: Any) {
+        percentLabel.text = String(format: "%.f %%" ,(percentSlider.value))
+        TipCalulator(bill: Double(billField.text!)!, percent: Double(percentSlider.value))
+    }
+    
+   
 }
 
