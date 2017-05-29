@@ -19,18 +19,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipControl: UISegmentedControl!
     @IBOutlet weak var percentSlider: UISlider!
     
-    var tipPercent = [0.18,0.2, 0.25]
+    let tipPercent = [0.18,0.2, 0.25]
+    var total = Double()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         percentSlider.value = Float(tipPercent[tipControl.selectedSegmentIndex]*100)
         percentLabel.text = String(format: "%.f %%" ,(percentSlider.value))
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let SettingVC : VCSetting = segue.destination as! VCSetting
+        SettingVC.total = Double(total)
     }
     
     @IBAction func onTap(_ sender: Any) {
@@ -40,7 +47,7 @@ class ViewController: UIViewController {
     
     func TipCalulator(bill:Double,percent:Double){
         let tip =   bill * percent
-        let total = bill + tip
+        total = bill + tip
         
         tipLabel.text =  String(format: "$%.2f" ,(tip))
         totalLabel.text = String(format: "$%.2f" ,(total))
@@ -60,7 +67,7 @@ class ViewController: UIViewController {
     
     @IBAction func checkPercentSlider(_ sender: Any) {
         percentLabel.text = String(format: "%.f %%" ,(percentSlider.value))
-        TipCalulator(bill: Double(billField.text!) ?? 0, percent: Double(percentSlider.value))
+        TipCalulator(bill: Double(billField.text!) ?? 0, percent: Double(percentSlider.value/100))
     }
     
    
