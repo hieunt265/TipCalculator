@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
     @IBOutlet weak var billField: UITextField!
     
@@ -17,10 +18,14 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tipControl: UISegmentedControl!
     @IBOutlet weak var percentSlider: UISlider!
+    
+    var tipPercent = [0.18,0.2, 0.25]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        percentSlider.value = Float(tipPercent[tipControl.selectedSegmentIndex]*100)
+        percentLabel.text = String(format: "%.f %%" ,(percentSlider.value))
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,20 +49,18 @@ class ViewController: UIViewController {
     
     @IBAction func calulatorTip(_ sender: Any) {
         
-        
-        let tipPercent = [0.18,0.2, 0.25]
-        
-        
+        //let tipPercent = [0.18,0.2, 0.25]
         let bill = Double(billField.text!) ?? 0
-        
         TipCalulator(bill: bill, percent: tipPercent[tipControl.selectedSegmentIndex])
+        percentSlider.value = Float(tipPercent[tipControl.selectedSegmentIndex]*100)
+        percentLabel.text = String(format: "%.f %%" ,(percentSlider.value))
         
 
     }
     
     @IBAction func checkPercentSlider(_ sender: Any) {
         percentLabel.text = String(format: "%.f %%" ,(percentSlider.value))
-        TipCalulator(bill: Double(billField.text!)!, percent: Double(percentSlider.value))
+        TipCalulator(bill: Double(billField.text!) ?? 0, percent: Double(percentSlider.value))
     }
     
    
