@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        billField.becomeFirstResponder()
         if let y = defaults.object(forKey: "percent") as? Float{
             percentSlider.value = y
             tipControl.selectedSegmentIndex = -1
