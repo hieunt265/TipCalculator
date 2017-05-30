@@ -31,7 +31,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='"https://giphy.com/embed/xUA7aKC94PwVeCkcHC" width="275" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/xUA7aKC94PwVeCkcHC">via GIPHY</a></p>
+<<img src='https://github.com/hieunt265/TipCalculator/blob/master/demoTipCalculator.gif title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
