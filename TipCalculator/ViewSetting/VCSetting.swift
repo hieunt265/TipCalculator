@@ -32,7 +32,19 @@ class VCSetting: UIViewController , UITableViewDataSource,UITableViewDelegate{
         sysboyCurrencyLabel.text = "$"
         // Do any additional setup after loading the view.
     }
-
+    
+/*    func creatValue(_ sender: Any){
+        let VietNam(Dong) = 22.72
+        let Eurozone(EUR) =  0.89
+        let United Kingdom(GBP) =
+        let Japanese Yên(JPY)
+        let China(PNY)
+        let Australia(AUD)
+        let Indonesia(IDR)
+        let Hong Kong(HKD)
+        let Korea(KRW)
+    }
+*/
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

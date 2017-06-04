@@ -37,11 +37,12 @@ class ViewController: UIViewController {
             percentSlider.value = Float(tipPercent[tipControl.selectedSegmentIndex]*100)
             defaults.set(percentSlider.value, forKey: "percent")
         }
+        
         percentLabel.text = String(format: "%.f %%" ,(percentSlider.value))
         if let z = defaults.object(forKey: "onSwitch") as? Bool {
             vatSwitch.isOn = z
             if vatSwitch.isOn {
-                vatLabel.text = "( -10% VAT for your Total)"
+                vatLabel.text = "(10% VAT for your Total)"
             }else{
                 vatLabel.text=""
             }
@@ -76,15 +77,24 @@ class ViewController: UIViewController {
     
     @IBAction func calulatorTip(_ sender: Any) {
         let bill = Double(billField.text!) ?? 0
+        billField.text = String(format: "%.f", bill)
+        if (billField.text?.lengthOfBytes(using: String.Encoding(rawValue: 8)) == 9) {
+            let alert = UIAlertController(title: "Sorry", message: "The bill < 99999999$", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
+            billField.text = String(format: "%i", Int(bill/10))
+        }else{
         defaults.set(billField.text, forKey: "old")
         
-        
-        if (billField.isEditing == false) {
+        if (tipControl.selectedSegmentIndex != -1)
+        {
             percentSlider.value = Float(tipPercent[tipControl.selectedSegmentIndex]*100)
             percentLabel.text = String(format: "%.f %%" ,(percentSlider.value))
         }
+            
         defaults.set(percentSlider.value, forKey: "percent")
-        TipCalulator(bill: bill, percent: Double(percentSlider.value/100))
+        TipCalulator(bill: bill, percent: Double(percentSlider.value)/100)
+        }
         
         
     }
@@ -93,12 +103,12 @@ class ViewController: UIViewController {
         defaults.set(percentSlider.value, forKey: "percent")
         percentLabel.text = String(format: "%.f %%" ,(percentSlider.value))
         TipCalulator(bill: Double(billField.text!) ?? 0, percent: Double(percentSlider.value/100))
-        tipControl.selectedSegmentIndex = -1
+        //tipControl.selectedSegmentIndex = -1
     }
     
     @IBAction func checkSwitch(_ sender: Any) {
         if vatSwitch.isOn {
-            vatLabel.text = "( -10% VAT for your Total)"
+            vatLabel.text = "(10% VAT for your Total)"
             totalLabel.text = String(format: "$%.2f" ,(total*1.1))
         }
         else
@@ -108,6 +118,7 @@ class ViewController: UIViewController {
         }
         defaults.set(vatSwitch.isOn, forKey: "onSwitch")
     }
+    
     @IBAction func deleteUserDefaults(_ sender: Any) {
         
         // create the alert
